@@ -1,4 +1,4 @@
-package photo_receiver
+package photo_handler
 
 import (
 	"net/http"

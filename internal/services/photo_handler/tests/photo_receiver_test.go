@@ -1,4 +1,4 @@
-package photo_receiver
+package photo_handler
 
 import (
 	"fmt"
@@ -34,7 +34,7 @@ func TestProcessImage(t *testing.T){
 	if comp.MimeType != "image/png"{
 		t.Errorf("the mimetype of the image is incorrect")
 	}
-
+	fmt.Println(len(comp.Bytes))
 	if len(comp.Bytes) == 0{
 		t.Errorf("There is no data in the photo object")
 	}

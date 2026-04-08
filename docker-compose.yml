@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata: ./db/db-data:/var/lib/posgresql/data
+
+  app:
+    build: . #shows where to build the app using Dockerfile
+    container_name: 
+    go-app depends_on: 
+      - db 
+    environment: 
+      DB_HOST: db 
+      DB_USER: admin 
+      DB_PASSWORD: secret 
+      DB_NAME: mydb 
+      ports: 
+        - "8080:8080" 
+  volumes: 
+    pgdata:
