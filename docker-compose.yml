@@ -12,11 +12,11 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata: ./db/db-data:/var/lib/posgresql/data
+      - ./db/db-data:/var/lib/posgresql/data
 
   app:
     build: . #shows where to build the app using Dockerfile
-    container_name: 
+    container_name: "golang-app"
     go-app depends_on: 
       - db 
     environment: 
@@ -26,5 +26,5 @@ services:
       DB_NAME: mydb 
       ports: 
         - "8080:8080" 
-  volumes: 
-    pgdata:
+volumes: 
+  ./db/db-data:
